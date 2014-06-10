@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+	#container
+		#header
+			a(href="http://www.iamantioch.com/")
+				img(src="http://www.iamantioch.com/wp-content/uploads/2014/04/Header_Logo.png" alt="I AM ANTIOCH" id="logo")
+			ul(id="top-menu")
+				li
+					a(href="/") Current Schedule
+				li
+					a(href="/TimeOff") Schedule Time Off
+		block content

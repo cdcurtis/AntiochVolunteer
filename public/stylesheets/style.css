@@ -1,0 +1,62 @@
+body {
+	margin: 0px;
+  padding-top: 48px;
+	padding-bottom: 98px;
+	line-height: 20px;
+	font-family: 'Droid Sans', Arial, sans-serif !important;
+  background-image: url(http://www.iamantioch.com/wp-content/themes/Chameleon/images/body-bg9.png);
+  background-color: #e0c14f;
+  }
+
+a {
+  color: #00B7FF;
+}
+#header {
+position: relative;
+padding: 30px 35px 3px;
+}
+#container {
+	text-align: left;
+	margin: 0 auto;
+	width: 960px;
+	border-radius: 7px;
+	background: white;
+	position: relative;
+}
+
+#logo {
+	float: left;
+}
+
+#top-menu {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	float: left;
+	background: transparent;
+	text-decoration: none;
+	list-style: none; 
+}
+ul#top-menu {
+	float: left;
+}
+ul#top-menu a {
+	font-size: 15px;
+	font-family: 'Kreon', Arial, sans-serif;
+	color: #393939;
+	text-decoration: none;
+	font-weight: lighter;
+}
+ul li {
+	float:left;
+	padding: 0px 9px;
+
+}
+ul li a {
+	text-decoration:none;
+}
+.content {
+	clear: both;
+}
