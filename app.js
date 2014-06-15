@@ -7,6 +7,12 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var passport = require ('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+var mongoose = require('mongoose/');
+
+mongoose.connect('mongodb://localhost/MyDatabase');
 
 var app = express();
 
@@ -21,8 +27,35 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// passport initalization
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
 app.use('/users', users);
+
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/loginSuccess',
+    failureRedirect: '/loginFailure'
+  })
+);
+ 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+ 
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+app.get('/loginFailure', function(req, res, next) {
+  res.send('Failed to authenticate');
+});
+ 
+app.get('/loginSuccess', function(req, res, next) {
+  res.send('Successfully authenticated');
+});
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -31,7 +64,7 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-/// error handlers
+// error handlers
 
 // development error handler
 // will print stacktrace
@@ -54,6 +87,35 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+var Schema = mongoose.Schema;
+var UserDetail = new Schema({
+      username: String,
+      password: String
+    }, {
+      collection: 'userInfo'
+    });
+var UserDetails = mongoose.model('userInfo', UserDetail);
 
+passport.use(new LocalStrategy(function(username, password, done) {
+  process.nextTick(function() {
+     UserDetails.findOne({
+      'username': username, 
+    }, function(err, user) {
+      if (err) {
+        return done(err);
+      }
+ 
+      if (!user) {
+        return done(null, false);
+      }
+ 
+      if (user.password != password) {
+        return done(null, false);
+      }
+ 
+      return done(null, user);
+    });
+  });
+}));
 
 module.exports = app;
