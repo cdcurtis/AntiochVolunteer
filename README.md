@@ -9,12 +9,14 @@ User feautures:
   - Download Scheduled Calendar.
   
 Admin Features
+
 (milestone 0)
   - Add/Manage Users
   - Add/Managed tasks
   - Add/Manage Jobs
   - Create events that will be need to be scheduled.
   - AutoGenerate schedules.
+
 (Milestone 1)
   - Edit generated Schedules
   - sms reminders to volunteers
