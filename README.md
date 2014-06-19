@@ -1,6 +1,6 @@
 This is going to be a Volunteer scheduling app written in nodejs. 
 
-This application will schedule will schedule tasks to for a sunday's service. The home page
+This application will schedule tasks to for a sunday's service. The home page
 will be the main view of current schedules.
 
 User feautures:
